@@ -1,7 +1,8 @@
 # Face Recognition
 
-> compare-faces api
-> identify-persons cmd
+> compare-faces [api]
+
+> identify-persons [cmd]
 
 ## Activate virtual environment
 ```
