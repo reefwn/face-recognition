@@ -1,6 +1,9 @@
 /identify-persons/images/*
+
 /compare-faces/images/idcard/*
 /compare-faces/images/original/*
 /compare-faces/images/selfie/*
 
-Pipfile.lock
+*.jpg
+*.jpeg
+*.png

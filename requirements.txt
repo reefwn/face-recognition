@@ -1,0 +1,4 @@
+# Python version: 3.8
+face-recognition
+flask
+flask-cors

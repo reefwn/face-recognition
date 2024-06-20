@@ -2,6 +2,9 @@ from PIL import Image, ImageDraw, ImageFont
 import face_recognition
 import os
 
+input_img = 'target.jpeg'
+output_img = 'output.jpg'
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 face_list, name_list = [], []
@@ -13,10 +16,7 @@ for i in os.listdir('./images'):
         face_list.append(image_encoding)
         name_list.append(os.path.splitext(i)[0])
 
-# print(face_list)
-# print(name_list)
-
-target_img = face_recognition.load_image_file(f'{basedir}/target.jpg')
+target_img = face_recognition.load_image_file(f'{basedir}/{input_img}')
 face_locations = face_recognition.face_locations(target_img)
 face_encodings = face_recognition.face_encodings(target_img, face_locations)
 
@@ -24,7 +24,7 @@ pil_img = Image.fromarray(target_img)
 draw = ImageDraw.Draw(pil_img)
 
 bk_green = (2, 215, 103)
-font = font = ImageFont.truetype("./fonts/Verdana.ttf", 28)
+font = ImageFont.truetype(f'{basedir}/fonts/Verdana.ttf', 28)
 
 tolerate = 0.5
 
@@ -42,7 +42,9 @@ for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodi
 
     draw.rectangle(((left, top), (right, bottom)),
                    outline=bk_green, width=5)
-    txt_width, txt_height = draw.textsize(name)
+    bbox = draw.textbbox((0, 0), text=name)
+    txt_width = bbox[2] - bbox[0]
+    txt_height = bbox[3] - bbox[1]
 
     if (right - left) / 2 < txt_width + 5:
         draw.rectangle(((left, bottom - txt_height), (right + txt_width / 1.5,
@@ -56,4 +58,6 @@ for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodi
 
 del draw
 
-pil_img.show()
+pil_img.save(f'{basedir}/{output_img}')
+
+print('Completed!')
