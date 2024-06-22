@@ -1,9 +1,5 @@
 # Face Recognition
 
-> compare-faces [api]
-
-> identify-persons [cmd]
-
 ## Start docker
 ```
 docker-compose up -d
@@ -17,7 +13,8 @@ docker exec -it {container_id} sh|bash
 ## Identify persons
 ```
 # shell inside docker
-cd identify-persons
+
+cd script 
 python identify-persons.py
 ```
 
