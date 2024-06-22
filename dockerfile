@@ -23,4 +23,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "compare-faces/api.py"]
+CMD ["python", "web/app.py"]

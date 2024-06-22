@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Images</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="notification is-success">
+        <button class="delete"></button>
+        {% for category, message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+      <div class="columns is-centered">
+        <div class="column box p-6">
+          <h1 class="title has-text-centered">Compare Faces Result</h1>
+          <div class="columns mb-0">
+            <div class="column is-half">
+              <p class="label">First Image</p>
+              <img src="{{ image1 }}" alt="First" class="img" style="max-height: 200px; max-width: 200px;">
+            </div>
+            <div class="column is-half">
+              <p class="label">Second Image</p>
+              <img src="{{ image2 }}" alt="Second" class="img" style="max-height: 200px; max-width: 200px;">
+            </div>
+          </div>
+          <div class="field">
+            <p class="label">Matching</p>
+            <p>{{ matching }}</p>
+          </div>
+          <div class="field">
+            <p class="label">Is Same Person</p>
+            <p>{{ is_same_person }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

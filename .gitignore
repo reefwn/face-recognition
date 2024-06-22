@@ -1,9 +1,5 @@
-/identify-persons/images/*
-
-/compare-faces/images/idcard/*
-/compare-faces/images/original/*
-/compare-faces/images/selfie/*
-
 *.jpg
 *.jpeg
 *.png
+
+__pycache__/
