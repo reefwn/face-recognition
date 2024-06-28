@@ -1,21 +1,41 @@
 # Face Recognition
 
-## Start docker
+## Running application
 ```
 docker-compose up -d
 ```
 
-### Running a shell in docker
+## Running script
+
+### Install pipenv
+
 ```
-docker exec -it {container_id} sh|bash
+brew install pipenv
 ```
 
-## Identify persons
-```
-# shell inside docker
+### Install dependencies
 
-cd script 
-python identify-persons.py
+```
+brew install cmake
+pipenv --python 3.8 install
+```
+
+### Activate virtual environment
+```
+pipenv --python 3.8 shell
+```
+
+### Run script
+```
+# inside virtual environment
+
+python identify_persons.py
+python video.py
+```
+
+### Remove virtual environment
+```
+pipenv --rm
 ```
 
 ## Technologies & IDE
